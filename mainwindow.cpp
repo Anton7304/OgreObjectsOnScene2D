@@ -475,10 +475,3 @@ void MainWindow::on_pushButton_19_clicked()//OK in Resize Ellipse
     ui->verticalSlider->setVisible(false);
     ui->label_8->setVisible(false);
 }
-
-void MainWindow::on_pushButton_21_clicked()
-{
-    //qDebug()<<ui->listWidget->item(1)->text();
-    //ui->listWidget->setCurrentItem(ui->listWidget->item(0),QItemSelectionModel::Select);
-    r_obj->createSqr();
-}

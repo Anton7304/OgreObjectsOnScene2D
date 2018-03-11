@@ -1,31 +1,31 @@
-#ifndef ELLIPSE_H
-#define ELLIPSE_H
+#ifndef Ellipse_H
+#define Ellipse_H
 
 #include <QMainWindow>
 #include <Ogre.h>
 #include "SdkQtCameraMan.h"
 
-class Ellipse
+class Ellipse1
 {
 public:
-    Ellipse(Ogre::SceneManager *m_ogreSceneMgr, const QString &name, const Ogre::Vector3 &position, const int &Hoz, const int &Vert, QColor cvet);
-    ~Ellipse();
+    Ellipse1(Ogre::SceneManager *m_ogreSceneMgr, const QString &name, const Ogre::Vector3 &position, const int &Hoz, const int &Vert, QColor cvet);
+    ~Ellipse1();
 
     void initL(Ogre::Vector3 pos);
     void initF(Ogre::Vector3 pos);
     void changeSizeHoz(int sizeE);
     void changeSizeVert(int sizeE);
-    void recolorEllipse(QColor colour);
-    void setNameEllipse( const QString &name );
-    void updateEllipseGeometryL();
-    void updateEllipseGeometryF();
+    void recolorEllipse1(QColor colour);
+    void setNameEllipse1( const QString &name );
+    void updateEllipse1GeometryL();
+    void updateEllipse1GeometryF();
 
-    QString getNameEllipse();
+    QString getNameEllipse1();
     Ogre::String getEllName();
     Ogre::String getEll1Name();
 
 private:
-    Ogre::SceneManager* m_ogreSceneMgrEllipse;
+    Ogre::SceneManager* m_ogreSceneMgrEllipse1;
     QString _nameEll;
     Ogre::ManualObject* ell;
     Ogre::SceneNode* nodeEll;
@@ -41,4 +41,4 @@ private:
     qreal b11;
 };
 
-#endif // ELLIPSE_H
+#endif // Ellipse_H

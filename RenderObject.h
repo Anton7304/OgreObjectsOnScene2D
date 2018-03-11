@@ -80,7 +80,6 @@ public:
     void setEllipseColor(QColor rgb, QString nRgb);
     void saveEllipse(QString name , int i_se);
     void deleteEllipse(int i_dde, QString dde);
-    void createSqr();
 
 public slots:
 
@@ -144,7 +143,7 @@ private:
     QList<Ogre::ManualObject*> listOfSqr;
     MarkerSqr* m_sqr;
     QList<PolyLine*> _listOfPolyLine;
-    QList<Ellipse*> _listOfEllipse;
+    QList<Ellipse1*> _listOfEllipse;
     int _cpl;
     QString _text;
     QString _mp;

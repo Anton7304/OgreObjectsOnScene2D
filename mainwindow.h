@@ -71,8 +71,6 @@ private slots:
 
     void on_pushButton_19_clicked();
 
-    void on_pushButton_21_clicked();
-
 private:
     Ui::MainWindow *ui;
     RenderObject * r_obj;

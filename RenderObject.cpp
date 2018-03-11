@@ -18,8 +18,8 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 #include "MarkerSqr.h"
-#include <OGRE/OgreSceneQuery.h>
-#include <guiwindarrow.h>
+#include <OgreSceneQuery.h>
+//#include <guiwindarrow.h>
 
 int txt1=5;
 int indx=0;
@@ -471,9 +471,9 @@ void RenderObject::mousePressEvent(QMouseEvent* em )//нажатие на кно
         //{
             if(/*_listOfEllipse[i]->getNameEllipse()=="default_ellipse" && */_i_ce == 111)
             {
-                if(_listOfEllipse.isEmpty() || (_listOfEllipse.last()->getNameEllipse()!="default_ellipse"))
+                if(_listOfEllipse.isEmpty() || (_listOfEllipse.last()->getNameEllipse1()!="default_ellipse"))
                 {
-                    _listOfEllipse.push_back( new Ellipse(m_ogreSceneMgr,"default_ellipse",posPoint,10,90,QColor(Qt::white)) );
+                    _listOfEllipse.push_back( new Ellipse1(m_ogreSceneMgr,"default_ellipse",posPoint,10,90,QColor(Qt::white)) );
                 }
             }
         //}
@@ -552,9 +552,9 @@ void RenderObject::mousePressEvent(QMouseEvent* em )//нажатие на кно
                 if(_listOfEllipse[j]->getEllName()==it->movable->getName())
                 {
 
-                    selectPoint(_listOfEllipse[j]->getNameEllipse(),14);
+                    selectPoint(_listOfEllipse[j]->getNameEllipse1(),14);
                     MainWindow *m_wd = new MainWindow;
-                    m_wd->setSelectList(_listOfEllipse[j]->getNameEllipse());
+                    m_wd->setSelectList(_listOfEllipse[j]->getNameEllipse1());
                 }
             }
         }
@@ -690,7 +690,7 @@ void RenderObject::selectPoint(QString sp, int i_sp)
     }
     for(int j=0; j<_listOfEllipse.count(); j++)//For Ellipse
     {
-        if(_listOfEllipse[j]->getNameEllipse()==sp)
+        if(_listOfEllipse[j]->getNameEllipse1()==sp)
         {
             m_ogreSceneMgr->getManualObject(_listOfEllipse[j]->getEll1Name())->setMaterialName(0,"redKvadrat");
         }
@@ -713,7 +713,7 @@ void RenderObject::cancelCreateEllipse(int i_de)
 {
     for(int i=0; i<_listOfEllipse.count(); i++)
     {
-        if(_listOfEllipse[i]->getNameEllipse()=="default_ellipse")
+        if(_listOfEllipse[i]->getNameEllipse1()=="default_ellipse")
         {
             delete _listOfEllipse[i];
             _listOfEllipse.removeAt(i);
@@ -728,7 +728,7 @@ void RenderObject::resizeEllipseHoz(int sPos, QString nPos)
     //_listOfEllipse.push_back( new Ellipse(m_ogreSceneMgr,"default_ellipse2") );
     for(int i=0; i<_listOfEllipse.count(); i++)
     {
-        if(_listOfEllipse[i]->getNameEllipse()==nPos)
+        if(_listOfEllipse[i]->getNameEllipse1()==nPos)
         {
             _sPos = sPos;
             _listOfEllipse[i]->changeSizeHoz(_sPos);
@@ -740,7 +740,7 @@ void RenderObject::resizeEllipseVert(int sPos, QString nPos)
 {
     for(int i=0; i<_listOfEllipse.count(); i++)
     {
-        if(_listOfEllipse[i]->getNameEllipse()==nPos)
+        if(_listOfEllipse[i]->getNameEllipse1()==nPos)
         {
             _sPos = sPos;
             _listOfEllipse[i]->changeSizeVert(_sPos);
@@ -752,10 +752,10 @@ void RenderObject::setEllipseColor(QColor rgb, QString nRgb)
 {
     for(int i=0; i<_listOfEllipse.count(); i++)
     {
-        if(_listOfEllipse[i]->getNameEllipse()==nRgb)
+        if(_listOfEllipse[i]->getNameEllipse1()==nRgb)
         {
             _rgb = rgb;
-            _listOfEllipse[i]->recolorEllipse(_rgb);
+            _listOfEllipse[i]->recolorEllipse1(_rgb);
         }
     }
 }
@@ -769,14 +769,14 @@ void RenderObject::saveEllipse(QString name, int i_se)
     }
     for(int i=0; i<_listOfEllipse.count(); i++)
     {
-        if(_listOfEllipse[i]->getNameEllipse()!="default_ellipse")//исправить
+        if(_listOfEllipse[i]->getNameEllipse1()!="default_ellipse")//исправить
         {
 //            QMessageBox::warning(0,"Предупреждение", "              Внимание!\n"
 //                                              "Нет объектов для сохранения!!");
         }
         else
         {
-            _listOfEllipse.last()->setNameEllipse(name);
+            _listOfEllipse.last()->setNameEllipse1(name);
             _i_ce = i_se;
         }
     }
@@ -787,19 +787,13 @@ void RenderObject::deleteEllipse(int i_dde, QString dde)
 {
     for(int i=0; i<_listOfEllipse.count(); i++)
     {
-        if(_listOfEllipse[i]->getNameEllipse()==dde)
+        if(_listOfEllipse[i]->getNameEllipse1()==dde)
         {
             delete _listOfEllipse[i];
             _listOfEllipse.removeAt(i);
             _i_ce = i_dde;
         }
     }
-}
-
-void RenderObject::createSqr()
-{
-    GUIWindArrow *g_wa = new GUIWindArrow(m_ogreSceneMgr);
-    g_wa->addSqr();
 }
 
 bool RenderObject::frameRenderingQueued(const Ogre::FrameEvent& evt)
